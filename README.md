@@ -10,3 +10,5 @@ npm install
 ### Run the ionic app
 
  ionic lab or (ionic serve)
+
+### ScreenShot
