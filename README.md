@@ -1,6 +1,9 @@
 # IonShop
 Progetto per Programmazione di Applicazioni Web e Mobile Unicam 2019 
 
+![spiral-tree-logo-3-](https://user-images.githubusercontent.com/25299965/51668213-033da980-1fc2-11e9-9743-6bd598398670.png)
+
+
 ## Installation:
 
 Install dependencies
