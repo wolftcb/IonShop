@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Home</ion-title>
+    </ion-navbar>
+  </ion-header>
+<ion-content>
+    <ion-list>
+   
+        <div class="top-page">
+       
+          
+            
+        </div>
+        <div class="middle-page">
+          <ion-row>
+              <ion-col>
+             <!--- <h3 text-right class="text-white">Sign in</h3>-->
+              </ion-col>
+          </ion-row>
+          
+      
+            <ion-item class="username">
+              <ion-input type="text" [(ngModel)]="email"  placeholder="Email"></ion-input>
+            </ion-item>
+          
+            <ion-item>
+              <ion-input type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
+            </ion-item>
+          
+          
+          
+            <button ion-button full (click)="login()"  color="primary">Sign In</button>  
+            
+            <button ion-button full class="text-white" (click)="showRegisterPage()" >Register</button>
+        </div>
+      
+      </ion-list>
+</ion-content>

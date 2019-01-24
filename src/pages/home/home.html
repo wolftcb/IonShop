@@ -1,14 +1,79 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>IonShop</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content  class="dark">
+	
+	
+    <ion-slides *ngIf="promoImagesLoaded" autoplay=3000  slidesPerView=1>
+        <ion-slide *ngFor="let promo of promoSliders">
+            <img src="{{promo.name}}" alt="">
+          </ion-slide>  
+  
+    </ion-slides>
+
+
+	
+
+		<div class="hello-title" text-wrap>
+		
+		
+
+
+	<ion-row *ngFor="let tilePair of tiles">
+		<ion-col *ngFor="let tile of tilePair">
+			<ion-card class="tile" (click)="showRegisterPage()">
+				<ion-card-content>
+				
+						<h1><ion-icon [name]="tile.icon"></ion-icon></h1>
+				<!---		<h2>{{tile.title}}</h2>--->	
+		
+				</ion-card-content>
+			</ion-card>
+		</ion-col>
+	</ion-row>
+
+	<ion-row>
+		<ion-card class="quick-action" (click)="callUs()">
+			<ion-card-content>
+				<ion-icon name="phone-portrait"></ion-icon>
+				<span>Call us</span>
+			</ion-card-content>
+		</ion-card>
+	</ion-row>
+
+	<ion-row>
+			<ion-card class="quick-action" (click)="sendEmail()">
+				<ion-card-content>
+					<ion-icon name="mail"></ion-icon>
+					<span>Send us and Email</span>
+				</ion-card-content>
+			</ion-card>
+		</ion-row>
+
+	<ion-row>
+		<ion-card class="quick-action" (click)="getDirections()">
+			<ion-card-content>
+				<ion-icon name="compass"></ion-icon>
+				<span>Find us / Get directions</span>
+			</ion-card-content>
+		</ion-card>
+	</ion-row>
+
+	<ion-row>
+		<ion-card class="quick-action" (click)="openFacebookPage()">
+			<ion-card-content>
+				<ion-icon name="logo-facebook"></ion-icon>
+				<span>Visit us on Facebook</span>
+			</ion-card-content>
+		</ion-card>
+	</ion-row>
+		</div>
 </ion-content>
+ 
+<!-- autoplay=6000 -->

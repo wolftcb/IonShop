@@ -1,0 +1,38 @@
+<!--
+  Generated template for the CategoryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Home</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+    <ion-content class="dark">
+        <div class="home-hello">
+          <img src="http://lorempixel.com/g/640/480/technics" />
+      </div>
+           
+        
+    <ion-grid>
+        <ion-row *ngFor="let i of productRows">
+          <ion-col *ngFor="let product of products | slice:(i*2):(i+1)*2" width-50 (click)="showDetails(product)">
+            <ion-card>         
+              <img src="{{product.thumb}}" alt="">
+              <ion-card-content>
+                  <p>
+                      {{product.price | currency:'EUR':true:'1.2-2'}}
+                  </p>
+              </ion-card-content>
+             </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+</ion-content>
