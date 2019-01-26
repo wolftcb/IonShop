@@ -19,19 +19,12 @@ export class LoginPage {
     private loadingCtrl: LoadingController,private alertCtrl: AlertController) {}
 
   ionViewDidLoad() {}
-<<<<<<< HEAD
- 
-=======
-  
->>>>>>> 3a1d4db75476cf2c6eea38eb2994ef5c2a84936f
+
   ionViewWillEnter() {
     var user = firebase.auth().currentUser;
     if (user) this.navCtrl.setRoot("HomePage");
   }
-<<<<<<< HEAD
-=======
-  
->>>>>>> 3a1d4db75476cf2c6eea38eb2994ef5c2a84936f
+
   login() {
 
     let loader = this.loadingCtrl.create({
