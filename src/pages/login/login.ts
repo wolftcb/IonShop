@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController, LoadingController, AlertController } from "ionic-angular";
 import { AuthProvider } from "../../providers/auth/auth";
+import firebase from "firebase";
 
 
 
@@ -18,7 +19,11 @@ export class LoginPage {
     private loadingCtrl: LoadingController,private alertCtrl: AlertController) {}
 
   ionViewDidLoad() {}
-
+ 
+  ionViewWillEnter() {
+    var user = firebase.auth().currentUser;
+    if (user) this.navCtrl.setRoot("HomePage");
+  }
   login() {
 
     let loader = this.loadingCtrl.create({

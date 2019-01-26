@@ -100,15 +100,7 @@ export class CheckoutPage {
   }
   removeAllCartItems() {
     return this. removeAllCartItems()}
- /* sendEmail(){
-    let email={
-      to:'stefano.dugo@studenti.unicam.it',
-      attachments:[
-        this.placeOrder
-      ],
-subject:'Order',
-    }
- }*/
+
 
 
 }

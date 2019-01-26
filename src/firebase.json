@@ -1,9 +1,6 @@
 {
     "categories" : {
-      "-ACC" : {
-        "name" : "Accessories",
-        "thumb" : "assets/imgs/categories/accessories.png"
-      },
+   
    
       "-ele" : {
         "name" : "Electronics",
