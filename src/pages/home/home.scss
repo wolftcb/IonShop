@@ -5,7 +5,7 @@ page-home {
         .scroll-content,
         fixed-content {
             
-            background: color($colors,contentbg);
+            background: linear-gradient(7deg, rgba(14, 4, 103, 0.84) 0%, rgba(50, 4, 217, 0.85) 100%) !important;
             ion-slides{
                 height: 35%;
                 .slide-zoom{
@@ -43,9 +43,11 @@ page-home {
             }
 
             .hello-title{
-         background: url('http://lorempixel.com/320/600/technics');
-                left: 60px;
-                right: 0;
+       //  background: url('http://lorempixel.com/320/600/technics');
+         background: url(../assets/imgs/b.jpg) ;
+       background-repeat: round;
+         background-size:contain;
+              
      
                 margin-top:-3rem;
                 height: 49.8rem;

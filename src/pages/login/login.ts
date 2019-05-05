@@ -19,25 +19,23 @@ export class LoginPage {
     private loadingCtrl: LoadingController,private alertCtrl: AlertController) {}
 
   ionViewDidLoad() {}
-<<<<<<< HEAD
  
-=======
-  
->>>>>>> 3a1d4db75476cf2c6eea38eb2994ef5c2a84936f
+//UTENTE ENTRA SE Loggato VA NELLA HOME
   ionViewWillEnter() {
     var user = firebase.auth().currentUser;
-    if (user) this.navCtrl.setRoot("HomePage");
-  }
-<<<<<<< HEAD
-=======
+    if (user) this.navCtrl.setRoot("ProfilePage");
+  }  
   
->>>>>>> 3a1d4db75476cf2c6eea38eb2994ef5c2a84936f
+  //Metodo login 
   login() {
-
+    /*  
+ Crea un indicatore di caricamento
+    */
     let loader = this.loadingCtrl.create({
       content: 'Authenticating..'
     });
     loader.present();
+    
     let loginParams = {
       email:this.email,
       password:this.password
@@ -45,6 +43,7 @@ export class LoginPage {
 
     this.authService.login(loginParams).then((res)=>{
       loader.dismiss();
+      
       this.navCtrl.setRoot('HomePage');
     }).catch((err)=>{
       loader.dismiss();
@@ -53,19 +52,20 @@ export class LoginPage {
 
 
   }
-
+//Messaggio allerta login utente//
+presentAlert(message) {
+  let alert = this.alertCtrl.create({
+    title: 'Errore Riprova',
+    subTitle: message,
+    buttons: ['Close']
+  });
+  alert.present();
+}
+//REGISTRATI CLICK E VA SU REGISTER PAGE
   showRegisterPage() {
     this.navCtrl.push("RegisterPage");
   }
 
-  presentAlert(message) {
-    let alert = this.alertCtrl.create({
-      title: 'Auth Error',
-      subTitle: message,
-      buttons: ['Close']
-    });
-    alert.present();
-  }
 
 
 }

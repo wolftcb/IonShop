@@ -8,22 +8,42 @@
     <ion-navbar color="primary">
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
-      </button>
+       </button>
       <ion-title>Profilo</ion-title>
-    </ion-navbar>
-  </ion-header>
+    
+  </ion-navbar>
+    </ion-header>
 
 
-<ion-content>
-  <ion-col col-4>
-    <span class="amt" text-right>
-      {{customerName | currency:'EUR':true}}
-    </span>
-  </ion-col>
+ 
+<ion-content center class="profile-image">
+
+    <!-- Avatar -->
+    <div center round >
+        <div style="width:90%;text-align: center;align-content: center;align-self: center;">
+            <img src="https://avatars1.githubusercontent.com/u/918975?v=3&s=120" class="avatar" >
+       </div>
   
+    </div>
+    <div padding>
+        <button ion-button round color="prymary">Nome:{{customerName}}</button>
+     
+     
+     
+        <button ion-button  round color="prymary">Email: {{customerEmail}}</button>
+     
+  
+        <button ion-button round color="">via:{{customerAddr}}</button>
+      </div>
+   
+ 
+  <button ion-button round class="text-white" (click)="showCartPage()" >MyCart</button>
 
-  <div class="spacer" style="height: 10px;"></div>
+
+
+  <div class="spacer" ></div>
   <div>
-    <button ion-button round outline color="danger" (click)="logout()">Logout</button>
+    <button ion-button round   color="danger" (click)="logout()">Logout</button>
   </div>
+  
 </ion-content>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, Events } from 'ionic-angular';
 import { ProductsProvider } from '../../providers/products/products';
-import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
+
 import { EmailService } from '../../providers/services/email.service';
 import { CallService } from '../../providers/services/call.service';
 import { MapsService } from '../../providers/services/maps.service';
@@ -23,7 +23,7 @@ export class HomePage {
 
   promoSliders: any[];
   products: any[];
-  productRows:any;
+ 
   promoImagesLoaded:boolean=false;
   private emailService: EmailService;
   private callService: CallService;
@@ -37,7 +37,8 @@ export class HomePage {
 		callService: CallService,
     mapsService: MapsService,
     browserService: InAppBrowserService,
-    private events: Events,private nativePageTransitions: NativePageTransitions) {
+   
+    private events: Events,) {
       this.emailService = emailService;
       this.callService = callService;
       this.mapsService = mapsService;
@@ -48,44 +49,11 @@ export class HomePage {
 
   ionViewWillEnter() {
     this.loadPromo();
-    this.loadProducts();
+   
   }
 
-  ionViewDidLeave() {
-    this.events.unsubscribe('promoLoaded');
-  }
-
-
-
-  ionViewWillLeave() {
-
-    let options: NativeTransitionOptions = {
-       direction: 'up',
-       duration: 500,
-       slowdownfactor: 3,
-       slidePixels: 20,
-       iosdelay: 100,
-       androiddelay: 150,
-       fixedPixelsTop: 0,
-       fixedPixelsBottom: 60
-      };
-   
-    this.nativePageTransitions.slide(options)
-      .then(()=>{
-
-      })
-      .catch(()=>{
-
-      });
-   
-   }
-
-   
-
-  ionViewDidLoad() {
-
-  }
-
+  
+//slider caricamento
   loadPromo() {
     let loader = this.loadingCtrl.create({
       content: 'Loading Promos..'
@@ -94,38 +62,13 @@ export class HomePage {
     this.productService.getPromoSlider();
 
     this.events.subscribe('promoLoaded', () => {
-      this.promoSliders = this.productService.promos;
+      this.promoSliders = this.productService.Arrpromos;
       if(this.promoSliders.length>0){
         this.promoImagesLoaded =true;
       }
       loader.dismiss();
     })
   }
-
-  loadProducts() {
-    this.productService.getProducts();
-    this.events.subscribe('productsLoaded', () => {
-      this.products = this.productService.products;
-      this.productRows = Array.from(Array(Math.ceil(this.products.length/2)).keys());
-      
-    })
-  }
-
-  showDetails(product){
-    let options: NativeTransitionOptions = {
-      direction: 'up',
-      duration: 500,
-      slowdownfactor: 3,
-      slidePixels: 20,
-      iosdelay: 100,
-      androiddelay: 150,
-      fixedPixelsTop: 0,
-      fixedPixelsBottom: 60
-     };
-    this.nativePageTransitions.slide(options);
-    this.navCtrl.push("SinglePage",{product:product});    
-  }
-  
 
   public getDirections() {
 		this.mapsService.openMapsApp(data.officeLocation);
@@ -142,7 +85,9 @@ export class HomePage {
 	public callUs() {
 		this.callService.call(data.phoneNumber);
 	}
-	private initTiles(): void {
+
+
+  private initTiles(): void {
 		this.tiles = [[{
 		
 	

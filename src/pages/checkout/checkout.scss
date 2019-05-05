@@ -1,16 +1,17 @@
 page-checkout {
      .scroll-content,
      fixed-content {
-          padding: 5px;
+          padding: 6px;
           ion-card {
                margin: 0 !important;
                width: 100% !important;
                margin-bottom: 9px !important;
                span.amt{
+                   
                     float: right !important;
                }
                div.total-wrap{
-                    padding: 13px 16px 14px;
+                    padding: 13px 19px 14px;
                     span.total{
                          color:#0058b6;
                     }

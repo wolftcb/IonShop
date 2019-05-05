@@ -1,5 +1,7 @@
 
-
+<!--
+  
+-->
 <ion-header>
   <ion-navbar color="primary">
     <button ion-button menuToggle>
@@ -10,6 +12,8 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
+
+
 <ion-content padding>
   <div *ngIf="isEmptyCart" class="empty-cart">
     <div class="empty-results">
@@ -33,6 +37,19 @@
               <span (click)="removeItem(itm)" class="remove">
                 Remove
               </span>
+              <ion-row class="item-count">
+                <ion-col class="qty">
+                    <button (click)="decreaseProductCount(itm)" clear ion-button small color="dark" class="mewbtn11">
+                      -
+                    </button>
+                    <button ion-button small clear color="dark" class="mewbtn11">
+                      {{itm.count}}
+                    </button>
+                    <button (click)="incrementProductCount(itm)" clear ion-button small color="dark" class="mewbtn11">
+                      +
+                    </button>
+                </ion-col>
+              </ion-row>
               <span class="price">
                 {{itm.totalPrice | currency:'EUR':true}}
               </span>

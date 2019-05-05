@@ -30,7 +30,7 @@ export class RegisterPage {
 
     this.AuthService.registerUser(userObj)
       .then((response: any) => {
-        if (response.success == true) {
+        if (response == true) {
           this.navCtrl.push('LoginPage');
         }
       })

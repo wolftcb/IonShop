@@ -4,5 +4,6 @@ import { Injectable } from '@angular/core';
 export class CallService {
 	public call(phoneNumber: string): void {
 		window.location.href = 'tel:' + phoneNumber;
+	
 	}
 }

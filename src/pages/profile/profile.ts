@@ -1,8 +1,10 @@
-import { Component, NgZone} from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController} from 'ionic-angular';
+
+import { Component, } from '@angular/core';
+import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import firebase from "firebase";
-//import { CartPage } from '../cart/cart';
+
+
 
 
 /**
@@ -17,50 +19,65 @@ import firebase from "firebase";
   selector: 'page-profile',
   templateUrl: 'profile.html',
 })
+
 export class ProfilePage {
-  avatar: string;
-  cartItems: any[] = [];
-  displayName: string;
-  productAmt: number = 0;
-  totalAmount: number = 0;
-  shippingFee: number = 20;
+  
   customerName: any;
+  customerEmail:any;
+  customerAddr:any;
+  
+
+   
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public authService: AuthProvider,
-    public zone: NgZone, public alertCtrl: AlertController,
+   
     ) {
-  }
-  ionViewDidLoad() {
-    this.authService
-      .getuserdetails()
-      .then((response: any) => {
-        this.customerName = response.name;
-      })
-      .catch(err => {
-        console.log("err", err);
-      });
   }
   ionViewWillEnter() {
     var user = firebase.auth().currentUser;
     if (!user) this.navCtrl.setRoot("LoginPage");
+   else{
+      this.ionViewDidLoad();
+    }
+   }
+
+  ionViewDidLoad() {
+   
+      this.authService
+        .getuserdetails()
+       
+        .then((response: any) => {
+          this.customerName = response.name;
+          this.customerEmail = response.email;
+          this.customerAddr = response.address;
+
+         console.log('Benvenuto',this.customerName);
+        
+        })
+        .catch(err => {
+          console.log("err", err);
+        });
+
+    
   }
+ 
+ showCartPage() {
+  this.navCtrl.push("CartPage");
+}
 
- /*ion(){
-  var user = firebase.database().ref();
-  user.once("value")
-    .then(function(snapshot) {
-      var key = snapshot.key; // null
-      var childKey = snapshot.child("/ordersdetails").key; // "ada"
-    });
-
-  
- }
- */
   logout() {
-    firebase.auth().signOut().then(() => {
-      this.navCtrl.setRoot('HomePage');
-    })
+    firebase.auth().signOut().then(function() {
+      window.localStorage.clear();
+     
+      console.log('Signout Succesfull')
+      
+   }, function(error) {
+      console.log('Signout Failed')  
+   });
+    
+   this.navCtrl.setRoot('HomePage');
   }
+ 
 }
 
 

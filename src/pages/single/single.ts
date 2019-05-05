@@ -14,32 +14,28 @@ export class SinglePage {
   cartItems: any[];
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private cartService: CartProvider, public toastCtrl: ToastController) {
-    if (this.navParams.get("product")) {
-      window.localStorage.setItem('selectedProduct', JSON.stringify(this.navParams.get("product")));
-    }
+  
 
-
-  }
+}
   ionViewDidEnter(){
+    if(this.navParams.get("product")){
+    window.localStorage.setItem('selectedProduct',JSON.stringify(this.navParams.get('product')))
+  }
     this.getSingleProduct();
   }
+  ionViewDidLoad() {
+    this.selectProduct = this.navParams.get("product");
+    this.cartService.getCartItems();
 
- 
+  }
   getSingleProduct() {
-    if (window.localStorage.getItem('selectedProduct') != 'undefined') {
+    if (window.localStorage.getItem('selectedProduct')) {
       this.selectProduct = JSON.parse(window.localStorage.getItem('selectedProduct'))
+     
     }
   }
 
-  ionViewDidLoad() {
-    this.selectProduct = this.navParams.get("product");
-    this.cartService.getCartItems().then((val) => {
-      this.cartItems = val;
-    })
-
-  }
-
-  decreaseProductCount() {
+   decreaseProductCount() {
     if (this.productCount > 1) {
       this.productCount--;
     }
@@ -62,15 +58,18 @@ export class SinglePage {
     };
     this.cartService.addToCart(cartProduct).then((val) => {
       this.presentToast(cartProduct.name);
+      
     });
   }
 
-
+///___toast___///
   presentToast(name) {
     let toast = this.toastCtrl.create({
-      message: `${name} has been added to cart`,
+      message: `${name} Aggiunto al carrello`,
       showCloseButton: true,
-      closeButtonText: 'View Cart'
+      
+      closeButtonText: 'Carrello'
+
     });
 
     toast.onDidDismiss(() => {
@@ -79,5 +78,8 @@ export class SinglePage {
     toast.present();
   }
 
+  showcartPage() {
+    this.navCtrl.push("CartPage");
+  }
 
 }

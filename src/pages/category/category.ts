@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { ProductsProvider } from '../../providers/products/products';
-import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
 @IonicPage()
 @Component({
   selector: 'page-category',
@@ -11,18 +10,13 @@ export class CategoryPage {
   products: any[];
   productRows:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private productService:ProductsProvider,private events: Events,private nativePageTransitions: NativePageTransitions) {
+    private productService:ProductsProvider,private events: Events) {
     
   }
 
   ionViewWillEnter() {
    
     this.loadProducts();
-  }
-
-
-  ionViewDidLoad() {
-
   }
 
   loadProducts() {
@@ -34,22 +28,10 @@ export class CategoryPage {
     })
   }
 
- 
-
-  
-  showDetails(product){
-    let options: NativeTransitionOptions = {
-      direction: 'up',
-      duration: 500,
-      slowdownfactor: 3,
-      slidePixels: 20,
-      iosdelay: 100,
-      androiddelay: 150,
-      fixedPixelsTop: 0,
-      fixedPixelsBottom: 90
-     };
-    this.nativePageTransitions.slide(options);
-    this.navCtrl.push("SinglePage",{product:product});    
+   showDetails(product: any){
+   
+   this.navCtrl.push("SinglePage",{product: product});  
+    console.log('apertura prodotto',product);  
   }
 
 }

@@ -14,10 +14,14 @@ export class CategoryProvider {
   }
 
   getCategories(){
-    this.categoriesRef.once('value', (snap) => {
+    /*
+    Questo metodo sta prendendo il tipo di evento come "valore" e quindi recupera l' istantanea dei dati. 
+    Quando aggiungiamo il metodo val () all'istantanea, otterremo la rappresentazione JavaScript dei dati.
+    */
+    this.categoriesRef.once('value', (snapshot) => {
       this.categories = [];
-      if (snap.val()) {
-        var tempCategories = snap.val();
+      if (snapshot.val()) {
+        var tempCategories = snapshot.val();
         for (var key in tempCategories) {
           let singleCategory = {
             id: key,
