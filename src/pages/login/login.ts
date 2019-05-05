@@ -19,6 +19,7 @@ export class LoginPage {
     private loadingCtrl: LoadingController,private alertCtrl: AlertController) {}
 
   ionViewDidLoad() {}
+<<<<<<< HEAD
  
 //UTENTE ENTRA SE Loggato VA NELLA HOME
   ionViewWillEnter() {
@@ -27,6 +28,14 @@ export class LoginPage {
   }  
   
   //Metodo login 
+=======
+
+  ionViewWillEnter() {
+    var user = firebase.auth().currentUser;
+    if (user) this.navCtrl.setRoot("HomePage");
+  }
+
+>>>>>>> 9758b7d2342c3d1a0a73594bc97960891546d443
   login() {
     /*  
  Crea un indicatore di caricamento
